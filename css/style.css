@@ -1,9 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+body {
+  background: hsl(185, 41%, 84%);
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  margin: 150px 0 75px;
+  text-align: center;
+}
+.main {
+  background: #ffffff;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 35px;
+}
 /* Attribution section */
 .attribution {
   font-size: 11px;
   text-align: center;
+  margin-top: 50px;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
