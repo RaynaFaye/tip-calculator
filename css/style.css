@@ -10,6 +10,10 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+body > * {
+  grid-column: 2;
 }
 .header {
   margin: 150px 0 75px;
@@ -20,7 +24,117 @@ body {
   border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
   padding: 35px;
+}
+/* Calculator section */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+fieldset legend {
+  padding: 0;
+}
+.calculator {
+  color: hsl(186, 14%, 43%);
+  font-weight: 700;
+}
+.calculator__input-block {
+  background: hsl(189, 41%, 97%);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  grid-gap: 10px;
+  padding: 5px 15px;
+  margin-top: 5px;
+}
+.calculator__input-icon-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculator__input {
+  border: none;
+  background: transparent;
+  text-align: right;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 24px;
+  color: hsl(183, 100%, 15%);
+  padding: 0;
+}
+.calculator__input:focus {
+  outline: 1px dotted hsl(183, 100%, 15%);
+}
+.calculator__bill-section {
+  margin-bottom: 25px;
+}
+.calculator__people-section {
+  margin-top: 25px;
+}
+.calcultor__tip__title {
+  margin-bottom: 10px;
+}
+.calcultor__tip__buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(110px, 1fr));
+  grid-gap: 10px;
+}
+.calcultor__tip__button {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.calcultor__tip__button > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+.calcultor__tip__button__label {
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 5px;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  cursor: pointer;
+  padding: 5px 0;
+}
+.calcultor__tip__button__label.checked {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+.calcultor__tip__button__label:focus {
+  background: hsl(172, 67%, 45%);
+}
+.custom__label {
+  position: absolute;
+  left: -100vw;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.custom__input {
+  width: 100%;
+  border: none;
+  background: hsl(189, 41%, 97%);
+  color: hsl(186, 14%, 43%);
+  font-size: 24px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  text-align: center;
+  padding: 0;
+}
+.custom__input:focus {
+  outline: 1px dotted hsl(183, 100%, 15%);
+}
+/* Results section */
+.results {
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 10px;
+  padding: 25px;
+  color: #ffffff;
 }
 /* Attribution section */
 .attribution {
