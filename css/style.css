@@ -41,32 +41,34 @@ fieldset legend {
   font-weight: 700;
 }
 .calculator__input-block {
-  background: hsl(189, 41%, 97%);
-  border-radius: 5px;
-  display: grid;
-  grid-template-columns: 15px 1fr;
-  grid-gap: 10px;
-  padding: 5px 15px;
+  position: relative;
   margin-top: 5px;
 }
 .calculator__input-icon-block {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 15px;
 }
 .calculator__input {
+  border-radius: 5px;
   border: none;
-  background: transparent;
+  background: hsl(189, 41%, 97%);
   text-align: right;
   font-family: 'Space Mono', monospace;
   font-weight: 700;
   font-size: 24px;
   color: hsl(183, 100%, 15%);
   padding: 0;
+  cursor: pointer;
+  width: 100%;
 }
 .calculator__input:focus {
-  outline: 1px dotted hsl(183, 100%, 15%);
+  outline: 2px solid hsl(172, 67%, 45%);
 }
+
 .calculator__bill-section {
   margin-bottom: 25px;
 }
@@ -104,8 +106,9 @@ fieldset legend {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
 }
-.calcultor__tip__button__label:focus {
-  background: hsl(172, 67%, 45%);
+.calcultor__tip__button__label:hover {
+  background: hsl(172, 49%, 66%);
+  color: hsl(183, 100%, 15%);
 }
 .custom__label {
   position: absolute;
@@ -118,6 +121,7 @@ fieldset legend {
 .custom__input {
   width: 100%;
   border: none;
+  border-radius: 5px;
   background: hsl(189, 41%, 97%);
   color: hsl(186, 14%, 43%);
   font-size: 24px;
@@ -125,9 +129,12 @@ fieldset legend {
   font-weight: 700;
   text-align: center;
   padding: 0;
+  cursor: pointer;
 }
 .custom__input:focus {
-  outline: 1px dotted hsl(183, 100%, 15%);
+  outline: 2px solid hsl(172, 67%, 45%);
+  text-align: right;
+  padding-right: 10px;
 }
 /* Results section */
 .results {
@@ -162,6 +169,10 @@ fieldset legend {
   font-weight: 700;
   margin: 0;
 }
+.results__button:disabled {
+  background: hsl(183, 100%, 20%);
+  cursor: unset;
+}
 .results__button {
   align-self: end;
   background: hsl(172, 67%, 45%);
@@ -173,6 +184,11 @@ fieldset legend {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
   font-size: 16px;
+  cursor: pointer;
+}
+.results__button:hover,
+.results__button:focus {
+  background: hsl(172, 100%, 79%);
   cursor: pointer;
 }
 /* Attribution section */
