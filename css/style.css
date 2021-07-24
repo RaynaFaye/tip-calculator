@@ -135,6 +135,45 @@ fieldset legend {
   border-radius: 10px;
   padding: 25px;
   color: #ffffff;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+.results__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.results__block:first-of-type {
+  margin-bottom: 15px;
+}
+.results__sentence {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  margin: 0;
+}
+.results__sentence__per-person {
+  color: hsl(184, 14%, 56%);
+  font-size: 12px;
+}
+.results__number {
+  color: hsl(172, 67%, 45%);
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+.results__button {
+  align-self: end;
+  background: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
 }
 /* Attribution section */
 .attribution {
