@@ -191,6 +191,10 @@ fieldset legend {
   background: hsl(172, 100%, 79%);
   cursor: pointer;
 }
+.results__button:disabled {
+  background: hsl(183, 100%, 20%);
+  cursor: unset;
+}
 /* Attribution section */
 .attribution {
   font-size: 11px;
@@ -199,4 +203,40 @@ fieldset legend {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+@media all and (max-width: 1280px) {
+  body {
+    grid-template-columns: 150px 1fr 150px;
+  }
+}
+@media all and (max-width: 1080px) {
+  body {
+    grid-template-columns: 50px 1fr 50px;
+  }
+}
+@media all and (max-width: 870px) {
+  body {
+    display: block;
+  }
+  .header {
+    margin: 50px 0 35px;
+  }
+  .main {
+    display: block;
+    margin: 0 25px;
+  }
+  .calcultor__tip__buttons {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+  .results__number {
+    font-size: 34px;
+  }
+  .results__button {
+    margin-top: 30px;
+  }
+}
+@media all and (max-width: 535px) {
+  .main {
+    margin: 0;
+  }
 }
