@@ -228,6 +228,9 @@ fieldset legend {
   .calcultor__tip__buttons {
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   }
+  .calculator__people-section {
+    margin-bottom: 25px;
+  }
   .results__number {
     font-size: 34px;
   }
