@@ -18,7 +18,10 @@
       <section class="calculator">
         <form action="" class="calculator__form">
           <div class="calculator__bill-section">
-            <label for="bill">Bill</label>
+            <div class="calculator__label-block">
+              <label for="bill">Bill</label>
+              <p class="calculator__label-block__error-message">Can't be Zero</p>
+            </div>
             <div class="calculator__input-block">
               <span class="calculator__input-icon-block"><img src="images/icon-dollar.svg" alt="" /></span>
               <input type="text" name="bill" id="bill" class="calculator__input" />
@@ -54,7 +57,10 @@
             </div>
           </fieldset>
           <div class="calculator__people-section">
-            <label for="people">Number of People</label>
+            <div class="calculator__label-block">
+              <label for="people">Number of People</label>
+              <p class="calculator__label-block__error-message">Can't be Zero</p>
+            </div>
             <div class="calculator__input-block">
               <span class="calculator__input-icon-block"><img src="images/icon-person.svg" alt="" /></span>
               <input type="text" name="people" id="people" class="calculator__input" />

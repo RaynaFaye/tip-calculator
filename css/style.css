@@ -40,6 +40,15 @@ fieldset legend {
   color: hsl(186, 14%, 43%);
   font-weight: 700;
 }
+.calculator__label-block {
+  display: flex;
+  justify-content: space-between;
+}
+.calculator__label-block__error-message {
+  color: rgb(187, 94, 77);
+  margin: 0;
+  display: none;
+}
 .calculator__input-block {
   position: relative;
   margin-top: 5px;
@@ -61,14 +70,16 @@ fieldset legend {
   font-weight: 700;
   font-size: 24px;
   color: hsl(183, 100%, 15%);
-  padding: 0;
+  padding: 0 15px 0 0;
   cursor: pointer;
   width: 100%;
 }
 .calculator__input:focus {
   outline: 2px solid hsl(172, 67%, 45%);
 }
-
+.calculator__input.error {
+  outline: 2px solid rgb(187, 94, 77);
+}
 .calculator__bill-section {
   margin-bottom: 25px;
 }
