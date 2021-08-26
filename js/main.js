@@ -1,12 +1,15 @@
 const form = document.querySelector('.calculator__form');
 const billInput = form.bill;
-let billInputValue = 0;
+let billInputValue = '';
 const peopleInput = form.people;
-let peopleInputValue = 0;
+let peopleInputValue = '';
 const tipButtons = form.tip;
 const tipCustom = form.tipcustom;
 let tipPercentage = 0;
 let resultsButton = document.querySelector('.results__button');
+let tipAmount = document.querySelector('.results__number__tip-value');
+let tipAmountValue = 0;
+let totalAmount = document.querySelector('.results__number__total-value');
 
 //Update the value boxes when entering value in each input or selecting radio button
 function updateValue(input, value) {
@@ -26,6 +29,22 @@ function updateValue(input, value) {
   }
 }
 
+//Calculate tip per person
+function calculateTipPerPerson() {
+  let percentage = parseFloat(tipPercentage / 100);
+  let tipValue = ((billInputValue / peopleInputValue) * percentage).toFixed(2);
+  tipAmount.textContent = tipValue;
+  tipAmountValue = parseFloat(tipValue);
+}
+//Calculate total per person
+function calculateTotalPerPerson() {
+  console.log(billInputValue);
+  if (billInputValue === '' || peopleInputValue === '') {
+    return;
+  }
+  totalAmount.textContent = (billInputValue / peopleInputValue + tipAmountValue).toFixed(2);
+}
+
 //Get Tip Percentage Value
 //Remove checked on labels
 function removeCheckedLabels() {
@@ -42,6 +61,8 @@ tipButtons.forEach((tipButton) => {
     tipPercentage = parseFloat(event.target.value);
     resultsButton.disabled = false;
     updateValue(tipButton, tipPercentage);
+    calculateTipPerPerson();
+    calculateTotalPerPerson();
   });
 });
 tipCustom.addEventListener('focusin', removeCheckedLabels);
@@ -52,6 +73,8 @@ tipCustom.addEventListener('focusout', function (event) {
   }
   tipPercentage = parseFloat(event.target.value);
   updateValue(tipCustom, tipPercentage);
+  calculateTipPerPerson();
+  calculateTotalPerPerson();
 });
 
 //Get Value from input and set Value of that input
@@ -76,11 +99,13 @@ function getInputValue(theInput, theValue) {
 //Get Bill Value
 billInput.addEventListener('focusout', function () {
   getInputValue(billInput, billInputValue);
+  calculateTotalPerPerson();
 });
 
 //Get Number of People Value
 peopleInput.addEventListener('focusout', function () {
   getInputValue(peopleInput, peopleInputValue);
+  calculateTotalPerPerson();
 });
 
 //Clear form and disable button again
@@ -89,4 +114,6 @@ resultsButton.addEventListener('click', function () {
   billInput.value = '';
   peopleInput.value = '';
   removeCheckedLabels();
+  tipAmount.textContent = '0.00';
+  totalAmount.textContent = '0.00';
 });
