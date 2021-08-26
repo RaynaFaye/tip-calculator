@@ -8,6 +8,24 @@ const tipCustom = form.tipcustom;
 let tipPercentage = 0;
 let resultsButton = document.querySelector('.results__button');
 
+//Update the value boxes when entering value in each input or selecting radio button
+function updateValue(input, value) {
+  switch (input) {
+    case 'bill':
+      billInputValue = value;
+      break;
+    case 'people':
+      peopleInputValue = value;
+      break;
+    case 'tip':
+      tipPercentage = value;
+      break;
+    case 'tipcustom':
+      tipPercentage = value;
+      break;
+  }
+}
+
 //Get Tip Percentage Value
 //Remove checked on labels
 function removeCheckedLabels() {
@@ -21,15 +39,19 @@ tipButtons.forEach((tipButton) => {
     removeCheckedLabels();
     tipButton.checked = true;
     event.target.previousElementSibling.classList.add('checked');
-    tipPercentage = event.target.value;
+    tipPercentage = parseFloat(event.target.value);
     resultsButton.disabled = false;
+    updateValue(tipButton, tipPercentage);
   });
 });
+tipCustom.addEventListener('focusin', removeCheckedLabels);
 tipCustom.addEventListener('focusout', function (event) {
+  removeCheckedLabels();
   if (event.target.value === '' || isNaN(event.target.value)) {
     event.target.value = 0;
   }
-  tipPercentage = event.target.value;
+  tipPercentage = parseFloat(event.target.value);
+  updateValue(tipCustom, tipPercentage);
 });
 
 //Get Value from input and set Value of that input
@@ -48,6 +70,7 @@ function getInputValue(theInput, theValue) {
   theInput.classList.remove('error');
   theValue = parseFloat(theInput.value);
   theInput.value = parseFloat(theInput.value);
+  updateValue(theInput.name, theValue);
 }
 
 //Get Bill Value
