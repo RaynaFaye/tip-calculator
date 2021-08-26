@@ -6,19 +6,23 @@ let peopleInputValue = 0;
 const tipButtons = form.tip;
 const tipCustom = form.tipcustom;
 let tipPercentage = 0;
+let resultsButton = document.querySelector('.results__button');
 
 //Get Tip Percentage Value
 //Remove checked on labels
 function removeCheckedLabels() {
   tipButtons.forEach((tipButton) => {
     tipButton.previousElementSibling.classList.remove('checked');
+    tipButton.checked = false;
   });
 }
 tipButtons.forEach((tipButton) => {
   tipButton.addEventListener('click', function (event) {
     removeCheckedLabels();
+    tipButton.checked = true;
     event.target.previousElementSibling.classList.add('checked');
     tipPercentage = event.target.value;
+    resultsButton.disabled = false;
   });
 });
 tipCustom.addEventListener('focusout', function (event) {
@@ -34,6 +38,7 @@ function getInputValue(theInput, theValue) {
     theInput.value = '';
     return;
   }
+  resultsButton.disabled = false;
   if (parseFloat(theInput.value) === 0) {
     theInput.labels[0].nextElementSibling.style.display = 'block';
     theInput.classList.add('error');
@@ -43,7 +48,6 @@ function getInputValue(theInput, theValue) {
   theInput.classList.remove('error');
   theValue = parseFloat(theInput.value);
   theInput.value = parseFloat(theInput.value);
-  console.log(theInput, theValue);
 }
 
 //Get Bill Value
@@ -54,5 +58,12 @@ billInput.addEventListener('focusout', function () {
 //Get Number of People Value
 peopleInput.addEventListener('focusout', function () {
   getInputValue(peopleInput, peopleInputValue);
-  console.log(peopleInput.labels[0].nextElementSibling);
+});
+
+//Clear form and disable button again
+resultsButton.addEventListener('click', function () {
+  resultsButton.disabled = true;
+  billInput.value = '';
+  peopleInput.value = '';
+  removeCheckedLabels();
 });
