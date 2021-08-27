@@ -29,8 +29,25 @@ function updateValue(input, value) {
   }
 }
 
+function clearValues() {
+  resultsButton.disabled = true;
+  billInput.value = '';
+  billInputValue = '';
+  peopleInput.value = '';
+  peopleInputValue = '';
+  tipCustom.value = '';
+  removeCheckedLabels();
+  tipPercentage = 0;
+  tipAmountValue = 0;
+  tipAmount.textContent = '0.00';
+  totalAmount.textContent = '0.00';
+}
+
 //Calculate tip per person
 function calculateTipPerPerson() {
+  if (billInputValue === '' || peopleInputValue === '') {
+    return;
+  }
   let percentage = parseFloat(tipPercentage / 100);
   let tipValue = ((billInputValue / peopleInputValue) * percentage).toFixed(2);
   tipAmount.textContent = tipValue;
@@ -38,7 +55,6 @@ function calculateTipPerPerson() {
 }
 //Calculate total per person
 function calculateTotalPerPerson() {
-  console.log(billInputValue);
   if (billInputValue === '' || peopleInputValue === '') {
     return;
   }
@@ -99,21 +115,30 @@ function getInputValue(theInput, theValue) {
 //Get Bill Value
 billInput.addEventListener('focusout', function () {
   getInputValue(billInput, billInputValue);
+  calculateTipPerPerson();
   calculateTotalPerPerson();
+});
+billInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    getInputValue(billInput, billInputValue);
+    calculateTipPerPerson();
+    calculateTotalPerPerson();
+  }
 });
 
 //Get Number of People Value
 peopleInput.addEventListener('focusout', function () {
   getInputValue(peopleInput, peopleInputValue);
+  calculateTipPerPerson();
   calculateTotalPerPerson();
+});
+peopleInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    getInputValue(peopleInput, peopleInputValue);
+    calculateTipPerPerson();
+    calculateTotalPerPerson();
+  }
 });
 
 //Clear form and disable button again
-resultsButton.addEventListener('click', function () {
-  resultsButton.disabled = true;
-  billInput.value = '';
-  peopleInput.value = '';
-  removeCheckedLabels();
-  tipAmount.textContent = '0.00';
-  totalAmount.textContent = '0.00';
-});
+resultsButton.addEventListener('click', clearValues);
